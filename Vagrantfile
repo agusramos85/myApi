@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder ".", "/var/www/myApi/"
+  config.vm.synced_folder ".", "/var/www/myApi"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -56,5 +56,11 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
   config.vm.provision :shell, path: "provisioners/vm-setup.sh", privileged: true
+  config.vm.provision :shell, path: "provisioners/composer-install.sh", privileged: false
+  config.vm.provision :shell, path: "provisioners/lumen-install.sh", privileged: true
+
+
+
+
 
 end
